@@ -11,7 +11,7 @@
   div class="my-3"
     span class="label" Snapshot
   - if place.snapshot.attached?
-    div class="w-fit mx-auto lg:mx-0"
+    div class="w-fit"
       = render 'application/image', image: place.snapshot
   - else
     span class="italic font-medium" There is no image
@@ -24,7 +24,7 @@
   div class="my-3"
     span class="label" Pictures
   - unless place.pictures.empty?
-    div class="w-fit mx-auto lg:mx-0 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2"
+    div class="w-fit grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2"
       - place.pictures.each do |image|
         = render 'application/image', image:
   - else

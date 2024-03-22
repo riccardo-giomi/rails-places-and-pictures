@@ -1,0 +1,71 @@
+- # locals: (place:, controls: [])
+
+- content = capture do
+  = form_with(model: place, class: 'contents') do |form|
+    - if place.errors.any?
+      div id="errors-explanation"
+        - errors_count = pluralize(place.errors.count, 'error')
+        h2 = "#{errors_count} prohibited this place from being saved:"
+        ul class="list-disc"
+          - place.errors.each do |error|
+            li = error.full_message
+
+    div class="my-3"
+      = form.label :name
+      = form.text_field :name
+      - if error = place.errors[:name]&.first
+        p class="field-error-explanation" = error.capitalize
+
+
+    div class="my-3"
+      = form.label :notes
+      = form.text_area :notes
+      - if error = place.errors[:notes]&.first
+        p class="field-error-explanation" = error.capitalize
+
+
+    div class="my-3"
+      = form.label :snapshot
+      / set is_required: to true for files with attached: true validations
+      = render 'application/form_file', form:, field: 'snapshot', file: place.persisted_snapshot, is_required: false
+
+
+    div class="my-3"
+      = form.label :latitude
+      = form.text_field :latitude
+      - if error = place.errors[:latitude]&.first
+        p class="field-error-explanation" = error.capitalize
+
+
+    div class="my-3"
+      = form.label :longitude
+      = form.text_field :longitude
+      - if error = place.errors[:longitude]&.first
+        p class="field-error-explanation" = error.capitalize
+
+
+    div class="my-3"
+      = form.label :pictures
+      / set is_required: to true for files with attached: true validations
+      = render 'application/form_files', form:, field: 'pictures', files: place.persisted_pictures, is_required: false
+
+    div class="pt-3"
+      = form.submit class: 'btn-submit'
+
+div class="content-box"
+  - if controls.empty?
+    = content
+  - else
+    div class="lg:grid lg:grid-cols-5 lg:gap-2"
+      div class="lg:col-span-4"
+        = content
+
+      div class="pt-3 lg:pt-0 lg:col-span-1"
+        - unless controls.empty?
+          div class="lg:sticky lg:top-1"
+            - if controls.include?(:show)
+              = link_to 'Show place', place, class: 'mb-2 button', title: 'Show place'
+            - if controls.include?(:edit)
+              = link_to 'Edit place', edit_place_path(place), class: 'mb-2 button', title: 'Edit place'
+            - if controls.include?(:destroy)
+              = delete_button_with_dialog 'Are you sure you want to delete this place?', 'Delete place', place, class: 'mb-2 btn-important'

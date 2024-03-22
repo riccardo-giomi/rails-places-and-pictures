@@ -1,24 +1,9 @@
-# README
+# Places and Pictures
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An application created as an exercise, it allows to save places selected from a
+map and upload pictures which will be associated with the place the picture was
+taken.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It will Start from a "normal" Rails application created with my
+[quickstart template](https://github.com/riccardo-giomi/rails-7.1-quickstart),
+and made into a Hotwire application.

@@ -4,16 +4,16 @@ FactoryBot.define do
   factory :place do
     name { 'Name Value' }
     notes { 'Notes Value' }
-    latitude { '13.37' }
-    longitude { '13.37' }
+    latitude { BigDecimal('13.37') }
+    longitude { BigDecimal('13.37') }
 
     # Handy for specs with more than one record, specifically those specifying
     # update operations
     factory :another_place do
       name { 'Another Name Value' }
       notes { 'Another Notes Value' }
-      latitude { '73.31' }
-      longitude { '73.31' }
+      latitude { BigDecimal('73.31') }
+      longitude { BigDecimal('73.31') }
     end
 
     # Used to generate "models with valid attributes" in specs, e.g. for

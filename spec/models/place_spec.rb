@@ -14,8 +14,8 @@ RSpec.describe Place do
     end
 
     specify('notes') { expect(place.notes).to eq('Notes Value') }
-    specify('latitude') { expect(place.latitude).to eq('13.37') }
-    specify('longitude') { expect(place.longitude).to eq('13.37') }
+    specify('latitude') { expect(place.latitude).to eq(BigDecimal('13.37')) }
+    specify('longitude') { expect(place.longitude).to eq(BigDecimal('13.37')) }
   end
 
   describe 'attachments' do

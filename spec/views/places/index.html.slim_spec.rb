@@ -13,9 +13,6 @@ RSpec.describe 'places/index' do
         assert_select 'div', html: Regexp.new('href=".*places\/\d+".*>Name Value')
         assert_select 'div', text: Regexp.new('Notes Value')
         assert_select 'div img[alt=?]', 'place_snapshot.jpg'
-        assert_select 'div', text: Regexp.new('13.37')
-        assert_select 'div', text: Regexp.new('13.37')
-        assert_select 'div img[alt=?]', 'place_pictures_1.jpg'
       end
     end
   end

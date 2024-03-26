@@ -15,16 +15,9 @@
 
   div class="my-3"
     h2 Pictures
-  - unless place.pictures.empty?
-    div class="w-fit flex flex-wrap gap-2"
-      - place.pictures.each do |image|
-        = render 'application/image', image:, variant: :thumb
-  - else
-    span class="italic font-medium" There are no images
-
-  div class="my-3"
-    span class="label" Coordinates (temp)
-    = "(#{place.latitude}, #{place.longitude})"
+    |> There are
+    span class="font-bold" = pluralize(place.pictures.count, 'picture')
+    |< related to this place.
 
 div id="#{dom_id place}" class="content-box"
   - if controls.empty?

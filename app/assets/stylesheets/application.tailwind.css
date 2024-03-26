@@ -6,14 +6,21 @@
   html {
     @apply h-full;
   }
+
   body {
     @apply bg-stone-50 text-stone-900;
     @apply dark:bg-neutral-800 dark:text-neutral-300;
   }
+
   h1 {
     @apply text-4xl text-center font-bold mb-3;
     @apply lg:mb-0;
   }
+
+  h2 {
+    @apply text-2xl font-bold mb-3;
+  }
+
   div,
   p {
     @apply break-words;

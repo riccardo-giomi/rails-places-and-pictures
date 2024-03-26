@@ -1,10 +1,10 @@
-- # locals(image:)
+- # locals: (image:, variant: :gallery)
 - dom_id = dom_id image
 
 div data-controller="dialog"
   div class="cursor-pointer" data-action="click->dialog#open"
     div class="image-preview"
-      = default_image_tag image, variant: :gallery
+      = default_image_tag image, variant:
 
   dialog id="image-#{dom_id}" data-dialog-target="dialog" data-action="click->dialog#close"
     div data-action="click->dialog#doNothing:capture:stop"

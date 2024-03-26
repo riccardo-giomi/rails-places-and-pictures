@@ -15,4 +15,10 @@ RSpec.describe 'places/new' do
       assert_select 'input[name=?][type=?][multiple]', 'place[pictures][]', 'file'
     end
   end
+
+  it 'has a map section' do
+    render
+
+    assert_select 'div[id=?]', 'map'
+  end
 end

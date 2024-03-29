@@ -1,6 +1,9 @@
 - # locals: (place:, controls: [])
 
 - content = capture do
+
+  = render 'application/map'
+
   = form_with(model: place, class: 'contents') do |form|
     - if place.errors.any?
       div id="errors-explanation"
@@ -16,19 +19,16 @@
       - if error = place.errors[:name]&.first
         p class="field-error-explanation" = error.capitalize
 
-
     div class="my-3"
       = form.label :notes
       = form.text_area :notes
       - if error = place.errors[:notes]&.first
         p class="field-error-explanation" = error.capitalize
 
-
     div class="my-3"
-      = form.label :snapshot
+      = form.label :pictures
       / set is_required: to true for files with attached: true validations
-      = render 'application/form_file', form:, field: 'snapshot', file: place.persisted_snapshot, is_required: false
-
+      = render 'application/form_files', form:, field: 'pictures', files: place.persisted_pictures, is_required: false
 
     div class="my-3"
       = form.label :latitude
@@ -36,18 +36,16 @@
       - if error = place.errors[:latitude]&.first
         p class="field-error-explanation" = error.capitalize
 
-
     div class="my-3"
       = form.label :longitude
       = form.text_field :longitude
       - if error = place.errors[:longitude]&.first
         p class="field-error-explanation" = error.capitalize
 
-
     div class="my-3"
-      = form.label :pictures
+      = form.label :snapshot
       / set is_required: to true for files with attached: true validations
-      = render 'application/form_files', form:, field: 'pictures', files: place.persisted_pictures, is_required: false
+      = render 'application/form_file', form:, field: 'snapshot', file: place.persisted_snapshot, is_required: false
 
     div class="pt-3"
       = form.submit class: 'btn-submit'

@@ -3,7 +3,7 @@ import L from "leaflet"
 
 export default class extends Controller {
   static targets = [ "map", "latitude", "longitude" ]
-  static values = { marker: Object }
+  static values = { marker: Object, readonly: Boolean, latitude: Number, longitude: Number }
 
   connect() {
     this.updatePosition(this.initialPosition())
@@ -25,9 +25,14 @@ export default class extends Controller {
   }
 
   map() {
-    return L.map(this.mapTarget, { attributionControl: false })
-            .setView(this.position, 13)
-            .on('click', this.onMapClick, this)
+    const map = L.map(this.mapTarget, { attributionControl: false })
+                 .setView(this.position, 13)
+
+    if(!this.readonlyValue) {
+      map.on('click', this.onMapClick, this)
+    }
+
+    return map
   }
 
   marker() {
@@ -36,14 +41,18 @@ export default class extends Controller {
       shadowUrl: this.markerValue.shadow
     })
 
-    return L.marker(this.position, {
+    const marker = L.marker(this.position, {
       icon,
       keyboard: true,
       autoPanOnFocus: true,
-      draggable: true
+      draggable: !this.readonlyValue
     })
-    .on('move', this.updatePosition, this)
-    .addTo(this.map)
+
+    if(!this.readonlyValue) {
+      marker.on('move', this.updatePosition, this)
+    }
+
+    return marker.addTo(this.map)
   }
 
   onMapClick(e) {
@@ -51,8 +60,17 @@ export default class extends Controller {
   }
 
   initialPosition() {
-    const latitude = this.latitudeTarget.value || 51.505
-    const longitude = this.longitudeTarget.value || -0.09
+    let latitude =  51.505
+    let longitude = -0.09
+
+    if(this.latitudeValue) {
+      latitude = this.latitudeValue
+      longitude = this.longitudeValue
+    }
+    else if(this.hasLatitudeTarget && this.latitudeTarget.value) {
+      latitude = this.latitudeTarget.value
+      longitude = this.longitudeTarget.value
+    }
 
     return { latlng: L.latLng(latitude, longitude) }
   }
@@ -60,7 +78,9 @@ export default class extends Controller {
   updatePosition({ latlng }) {
     this.position = latlng
 
-    this.latitudeTarget.value  = latlng.lat
-    this.longitudeTarget.value = latlng.lng
+    if(this.hasLatitudeTarget) {
+      this.latitudeTarget.value  = latlng.lat
+      this.longitudeTarget.value = latlng.lng
+    }
   }
 }

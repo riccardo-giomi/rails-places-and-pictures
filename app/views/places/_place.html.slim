@@ -1,17 +1,19 @@
 - # locals: (place:, controls: [])
 
-- content = capture do
+div[id="#{dom_id place}" class="content-box"
+    data-controller="map"
+    data-map-readonly-value="true"
+    data-map-latitude-value=place.latitude
+    data-map-longitude-value=place.longitude
+    data-map-marker-value=marker_icon_data]
 
-div id="#{dom_id place}" class="content-box"
   div class="lg:grid lg:grid-cols-5 lg:gap-2"
     div class="lg:col-span-4"
+
+      div id="map" class="h-96 mt-0 my-3" data-map-target="map"
+
       div class="text-3xl font-bold"
         = link_to model_title(place, 'name'), place
-
-      div class="my-3"
-      - if place.snapshot.attached?
-        div class="w-fit"
-          = render 'application/image', image: place.snapshot
 
       - if place.notes.present?
         div class="my-3"

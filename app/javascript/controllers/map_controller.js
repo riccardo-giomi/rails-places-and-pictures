@@ -6,7 +6,7 @@ export default class extends Controller {
   static values = { marker: Object }
 
   connect() {
-    this.updatePosition({ latlng: L.latLng(51.505, -0.09) })
+    this.updatePosition(this.initialPosition())
     this.initializeMap()
   }
 
@@ -48,6 +48,13 @@ export default class extends Controller {
 
   onMapClick(e) {
     this.marker.setLatLng(e.latlng)
+  }
+
+  initialPosition() {
+    const latitude = this.latitudeTarget.value || 51.505
+    const longitude = this.longitudeTarget.value || -0.09
+
+    return { latlng: L.latLng(latitude, longitude) }
   }
 
   updatePosition({ latlng }) {

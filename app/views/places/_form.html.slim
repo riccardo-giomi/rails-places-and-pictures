@@ -32,13 +32,13 @@
 
       div class="my-3"
         = form.label :latitude
-        = form.text_field :latitude
+        = form.text_field :latitude, data: { 'map-target': "latitude" }, disabled: true, class: 'opacity-50'
         - if error = place.errors[:latitude]&.first
           p class="field-error-explanation" = error.capitalize
 
       div class="my-3"
         = form.label :longitude
-        = form.text_field :longitude
+        = form.text_field :longitude, data: { 'map-target': "longitude" }, disabled: true, class: 'opacity-50'
         - if error = place.errors[:longitude]&.first
           p class="field-error-explanation" = error.capitalize
 

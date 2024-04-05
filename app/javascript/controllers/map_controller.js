@@ -2,13 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 import L from "leaflet"
 
 export default class extends Controller {
-  static targets = [ "map" ]
+  static targets = [ "map", "latitude", "longitude" ]
   static values = { marker: Object }
 
   connect() {
-    this.latitude = 51.505
-    this.longitude = -0.09
-
+    this.updatePosition({ latlng: L.latLng(51.505, -0.09) })
     this.initializeMap()
   }
 
@@ -28,7 +26,7 @@ export default class extends Controller {
 
   map() {
     return L.map(this.mapTarget, { attributionControl: false })
-            .setView([this.latitude, this.longitude], 13)
+            .setView(this.position, 13)
             .on('click', this.onMapClick, this)
   }
 
@@ -38,7 +36,7 @@ export default class extends Controller {
       shadowUrl: this.markerValue.shadow
     })
 
-    return L.marker([this.latitude, this.longitude], {
+    return L.marker(this.position, {
       icon,
       keyboard: true,
       autoPanOnFocus: true,
@@ -52,8 +50,10 @@ export default class extends Controller {
     this.marker.setLatLng(e.latlng)
   }
 
-  updatePosition(latitude, longitude) {
-    this.latitude  = latitude
-    this.longitude = longitude
+  updatePosition({ latlng }) {
+    this.position = latlng
+
+    this.latitudeTarget.value  = latlng.lat
+    this.longitudeTarget.value = latlng.lng
   }
 }

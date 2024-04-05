@@ -1,54 +1,54 @@
 - # locals: (place:, controls: [])
 
 - content = capture do
+  div data-controller="map" data-map-marker-value=marker_icon_data
+    div id="map" class="h-96" data-map-target="map"
 
-  = render 'application/map'
+    = form_with(model: place, class: 'contents') do |form|
+      - if place.errors.any?
+        div id="errors-explanation"
+          - errors_count = pluralize(place.errors.count, 'error')
+          h2 = "#{errors_count} prohibited this place from being saved:"
+          ul class="list-disc"
+            - place.errors.each do |error|
+              li = error.full_message
 
-  = form_with(model: place, class: 'contents') do |form|
-    - if place.errors.any?
-      div id="errors-explanation"
-        - errors_count = pluralize(place.errors.count, 'error')
-        h2 = "#{errors_count} prohibited this place from being saved:"
-        ul class="list-disc"
-          - place.errors.each do |error|
-            li = error.full_message
+      div class="my-3"
+        = form.label :name
+        = form.text_field :name
+        - if error = place.errors[:name]&.first
+          p class="field-error-explanation" = error.capitalize
 
-    div class="my-3"
-      = form.label :name
-      = form.text_field :name
-      - if error = place.errors[:name]&.first
-        p class="field-error-explanation" = error.capitalize
+      div class="my-3"
+        = form.label :notes
+        = form.text_area :notes
+        - if error = place.errors[:notes]&.first
+          p class="field-error-explanation" = error.capitalize
 
-    div class="my-3"
-      = form.label :notes
-      = form.text_area :notes
-      - if error = place.errors[:notes]&.first
-        p class="field-error-explanation" = error.capitalize
+      div class="my-3"
+        = form.label :pictures
+        / set is_required: to true for files with attached: true validations
+        = render 'application/form_files', form:, field: 'pictures', files: place.persisted_pictures, is_required: false
 
-    div class="my-3"
-      = form.label :pictures
-      / set is_required: to true for files with attached: true validations
-      = render 'application/form_files', form:, field: 'pictures', files: place.persisted_pictures, is_required: false
+      div class="my-3"
+        = form.label :latitude
+        = form.text_field :latitude
+        - if error = place.errors[:latitude]&.first
+          p class="field-error-explanation" = error.capitalize
 
-    div class="my-3"
-      = form.label :latitude
-      = form.text_field :latitude
-      - if error = place.errors[:latitude]&.first
-        p class="field-error-explanation" = error.capitalize
+      div class="my-3"
+        = form.label :longitude
+        = form.text_field :longitude
+        - if error = place.errors[:longitude]&.first
+          p class="field-error-explanation" = error.capitalize
 
-    div class="my-3"
-      = form.label :longitude
-      = form.text_field :longitude
-      - if error = place.errors[:longitude]&.first
-        p class="field-error-explanation" = error.capitalize
+      div class="my-3"
+        = form.label :snapshot
+        / set is_required: to true for files with attached: true validations
+        = render 'application/form_file', form:, field: 'snapshot', file: place.persisted_snapshot, is_required: false
 
-    div class="my-3"
-      = form.label :snapshot
-      / set is_required: to true for files with attached: true validations
-      = render 'application/form_file', form:, field: 'snapshot', file: place.persisted_snapshot, is_required: false
-
-    div class="pt-3"
-      = form.submit class: 'btn-submit'
+      div class="pt-3"
+        = form.submit class: 'btn-submit'
 
 div class="content-box"
   - if controls.empty?

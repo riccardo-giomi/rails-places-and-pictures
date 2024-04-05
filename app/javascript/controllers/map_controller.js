@@ -27,10 +27,9 @@ export default class extends Controller {
   }
 
   map() {
-    const map = L.map(this.mapTarget, { attributionControl: false }).setView([this.latitude, this.longitude], 13)
-    map.on('click', this.onMapClick, this)
-
-    return map
+    return L.map(this.mapTarget, { attributionControl: false })
+            .setView([this.latitude, this.longitude], 13)
+            .on('click', this.onMapClick, this)
   }
 
   marker() {
@@ -39,13 +38,22 @@ export default class extends Controller {
       shadowUrl: this.markerValue.shadow
     })
 
-    return L.marker([this.latitude, this.longitude], { icon }).addTo(this.map)
+    return L.marker([this.latitude, this.longitude], {
+      icon,
+      keyboard: true,
+      autoPanOnFocus: true,
+      draggable: true
+    })
+    .on('move', this.updatePosition, this)
+    .addTo(this.map)
   }
 
   onMapClick(e) {
-    this.latitude  = e.latlng.lat
-    this.longitude = e.latlng.lng
+    this.marker.setLatLng(e.latlng)
+  }
 
-    this.marker.setLatLng([this.latitude, this.longitude])
+  updatePosition(latitude, longitude) {
+    this.latitude  = latitude
+    this.longitude = longitude
   }
 }

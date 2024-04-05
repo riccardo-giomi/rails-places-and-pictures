@@ -1,7 +1,7 @@
 - # locals: (place:, controls: [])
 
 - content = capture do
-  div data-controller="map" data-map-marker-value=marker_icon_data
+  div class="form-container" data-controller="map" data-map-marker-value=marker_icon_data
     div id="map" class="h-96" data-map-target="map"
 
     = form_with(model: place, class: 'contents') do |form|

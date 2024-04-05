@@ -52,13 +52,9 @@
   [type="week"],
   select,
   textarea {
-    @apply p-1.5 w-full lg:w-96;
+    @apply p-1.5 w-full;
     @apply border-stone-900;
     @apply dark:text-neutral-900 dark:bg-neutral-300 dark:border-0;
-  }
-
-  checkbox {
-    @apply block mt-2 h-5 w-5;
   }
 
   [type="date"]:focus,
@@ -77,6 +73,14 @@
   textarea:focus {
     @apply outline-none border-2 border-stone-900 ring-0;
     @apply dark:border-0 dark:bg-neutral-300 border-neutral-700;
+  }
+
+  checkbox {
+    @apply block mt-2 h-5 w-5;
+  }
+
+  textarea {
+    @apply h-48;
   }
 
   [type="file"]:focus {
@@ -149,6 +153,10 @@
   }
   .btn-submit {
     @apply button lg:w-auto;
+  }
+
+  .form-container {
+    @apply xl:w-3/4 mx-auto;
   }
 
   form.contents .field_with_errors > input,

@@ -19,37 +19,6 @@ RSpec.describe Place do
   end
 
   describe 'attachments' do
-    describe '#snapshot' do
-      let(:variants) { described_class.reflect_on_attachment(:snapshot).named_variants.keys }
-
-      # Note that it still responds to #attachments with a single-value array
-      it 'is a single-file attachment' do
-        expect(place.snapshot).to respond_to(:attachment)
-      end
-
-      it 'has a "gallery" variant' do
-        expect(variants).to include(:gallery)
-      end
-
-      it 'has a "thumb" variant' do
-        expect(variants).to include(:thumb)
-      end
-
-      # Additional spec for images that are validated as required.
-      # it 'is required' do
-      #   expect(place).to validate_attached_of(:snapshot)
-      # end
-
-      it 'must be a valid image file' do
-        expect(place).to validate_content_type_of(:snapshot).allowing(:jpg, :jpeg, :png)
-      end
-
-      # Additional spec for images that have a size validation (1MB in this example).
-      # it 'must be of the right size (<= 1MB)' do
-      #   expect(place).to validate_size_of(:snapshot).less_than_or_equal_to(1.megabyte)
-      # end
-    end
-
     describe '#pictures' do
       let(:variants) { described_class.reflect_on_attachment(:pictures).named_variants.keys }
 

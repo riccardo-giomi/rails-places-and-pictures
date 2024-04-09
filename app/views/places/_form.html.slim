@@ -42,11 +42,6 @@
         / set is_required: to true for files with attached: true validations
         = render 'application/form_files', form:, field: 'pictures', files: place.persisted_pictures, is_required: false
 
-      div class="my-3"
-        = form.label :snapshot
-        / set is_required: to true for files with attached: true validations
-        = render 'application/form_file', form:, field: 'snapshot', file: place.persisted_snapshot, is_required: false
-
       div class="pt-3"
         = form.submit class: 'btn-submit'
 

@@ -11,7 +11,6 @@ RSpec.describe 'places/show' do
   it 'renders attributes' do
     render
     expect(rendered).to match(/Notes Value/) # #notes
-    expect(rendered).to match(/place_snapshot.jpg/) # #snapshot
     expect(rendered).to match(/13.37/) # #latitude
     expect(rendered).to match(/13.37/) # #longitude
     expect(rendered).to match(/place_pictures_1.jpg/) # #pictures

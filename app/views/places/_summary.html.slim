@@ -6,11 +6,6 @@ div id="#{dom_id place}" class="content-box"
       div class="text-3xl font-bold"
         = link_to model_title(place, 'name'), place
 
-      div class="my-3"
-      - if place.snapshot.attached?
-        div class="w-fit"
-          = render 'application/image', image: place.snapshot
-
       - if place.notes.present?
         div class="my-3"
           = place.notes

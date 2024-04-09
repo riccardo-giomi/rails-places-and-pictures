@@ -37,8 +37,7 @@ class PlacesController < ApplicationController
   # PATCH/PUT /places/1 or /places/1.json
   def update
     respond_to do |format|
-      attributes = params_with_file_removal
-      if @place.update(attributes)
+      if @place.update(place_params)
         format.html { redirect_to place_url(@place), notice: 'Place was successfully updated.' }
         format.json { render :show, status: :ok, location: @place }
       else
@@ -67,16 +66,6 @@ class PlacesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def place_params
-    params.require(:place).permit(:name, :notes, :snapshot, :latitude, :longitude, pictures: [])
-  end
-
-  # Allow web requests to remove single attachments by setting the param value to nil.
-  # This allowes single and multi attachments to behave the same way, but it
-  # requires non-JSON requests to always specify attachments that we want to
-  # keep (by file signed-id).
-  def params_with_file_removal
-    attributes = place_params
-    attributes['snapshot'] ||= '' if request.format.html?
-    attributes
+    params.require(:place).permit(:name, :notes, :latitude, :longitude, pictures: [])
   end
 end

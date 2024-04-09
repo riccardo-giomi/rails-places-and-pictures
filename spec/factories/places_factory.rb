@@ -23,12 +23,6 @@ FactoryBot.define do
     # It can be expanded later if the model gains special attributes.
     factory :complete_place do
       after(:build) do |object|
-        object.snapshot.attach(
-          io:           File.open(Rails.root.join('spec/fixtures/files/300x300.jpg').to_s),
-          filename:     'place_snapshot.jpg',
-          content_type: 'image/jpg'
-        )
-
         object.pictures.attach(
           io:           File.open(Rails.root.join('spec/fixtures/files/300x300.jpg').to_s),
           filename:     'place_pictures_1.jpg',

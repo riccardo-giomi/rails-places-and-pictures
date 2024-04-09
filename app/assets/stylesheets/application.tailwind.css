@@ -12,8 +12,25 @@
     @apply dark:bg-neutral-800 dark:text-neutral-300;
   }
 
+  nav {
+    @apply bg-neutral-200 border border-stone-300 p-2 md:mt-5 shadow-md shadow-stone-300;
+    @apply dark:bg-neutral-950 dark:border-neutral-700 dark:shadow-md dark:shadow-neutral-700;
+
+    h1 {
+      @apply text-2xl;
+    }
+
+    .button {
+      @apply text-base px-2;
+    }
+  }
+
+  header {
+    @apply content-box mt-0;
+  }
+
   h1 {
-    @apply text-4xl text-center font-bold mb-3;
+    @apply text-4xl text-center font-bold;
     @apply lg:mb-0;
   }
 
@@ -100,10 +117,6 @@
 }
 
 @layer components {
-  .header {
-    @apply content-box mt-0;
-  }
-
   .page-title {
     @apply text-center lg:text-left;
   }

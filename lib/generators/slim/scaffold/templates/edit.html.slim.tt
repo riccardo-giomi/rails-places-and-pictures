@@ -2,7 +2,7 @@
 - content_for :page_title, "<%= human_name.pluralize %> | #{content_title}"
 
 div class="w-full"
-  div class="header lg:flex items-center gap-1"
+  header class="lg:flex items-center gap-1"
     div class="lg:flex-grow"
       h1 class="page-title" = content_title
     div class="lg:flex-shrink"

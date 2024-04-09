@@ -176,4 +176,16 @@
     @apply text-red-600 text-sm mt-1;
     @apply dark:text-red-500;
   }
+
+  #map {
+    @apply dark:text-stone-900;
+
+    input {
+      @apply dark:bg-stone-50;
+    }
+
+    .results div[data-key]{
+      @apply hover:bg-stone-200;
+    }
+  }
 }

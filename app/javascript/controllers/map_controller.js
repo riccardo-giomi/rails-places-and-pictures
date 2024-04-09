@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import L from "leaflet"
+import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch'
 
 export default class extends Controller {
   static targets = [ "map", "latitude", "longitude" ]
@@ -11,8 +12,9 @@ export default class extends Controller {
   }
 
   initializeMap() {
-    this.map    = this.map()
-    this.marker = this.marker()
+    this.map       = this.map()
+    this.marker    = this.marker()
+    this.searchControl = this.searchControl()
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -53,6 +55,18 @@ export default class extends Controller {
     }
 
     return marker.addTo(this.map)
+  }
+
+  searchControl() {
+    const style = this.readonlyValue ? 'button' : 'bar'
+
+    const searchControl = new GeoSearchControl({
+      provider: new OpenStreetMapProvider(),
+      showMarker: false,
+      style
+    });
+
+    return this.map.addControl(searchControl);
   }
 
   onMapClick(e) {

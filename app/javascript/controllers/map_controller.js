@@ -15,15 +15,6 @@ export default class extends Controller {
     this.map       = this.map()
     this.marker    = this.marker()
     this.searchControl = this.searchControl()
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: ' Map from &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(this.map)
-
-    L.control.attribution({ prefix: false })
-      .setPrefix('Realized using <a href="https://leafletjs.com" title="A JavaScript library for interactive maps">Leaflet</a>')
-      .addTo(this.map)
   }
 
   map() {
@@ -33,6 +24,15 @@ export default class extends Controller {
     if(!this.readonlyValue) {
       map.on('click', this.onMapClick, this)
     }
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: ' Map from &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map)
+
+    L.control.attribution({ prefix: false })
+      .setPrefix('Realized using <a href="https://leafletjs.com" title="A JavaScript library for interactive maps">Leaflet</a>')
+      .addTo(map)
 
     return map
   }

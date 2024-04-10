@@ -76,6 +76,8 @@ group :development, :test do
   gem 'solargraph'
   gem 'solargraph-rails'
 end
+
 gem 'active_storage_validations'
 gem 'image_processing'
+gem 'requestjs-rails'
 gem 'ruby-vips'

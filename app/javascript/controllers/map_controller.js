@@ -7,7 +7,7 @@ export default class extends Controller {
   static values = { marker: Object, readonly: Boolean, latitude: Number, longitude: Number }
 
   connect() {
-    this.updatePosition(this.initialPosition())
+    this.initializePosition()
     this.initializeMap()
   }
 
@@ -71,6 +71,10 @@ export default class extends Controller {
 
   onMapClick(e) {
     this.marker.setLatLng(e.latlng)
+  }
+
+  initializePosition() {
+    this.updatePosition(this.initialPosition())
   }
 
   initialPosition() {

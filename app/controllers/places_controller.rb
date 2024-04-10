@@ -57,6 +57,12 @@ class PlacesController < ApplicationController
     end
   end
 
+  # Request for simplified information on all saved places, kept as lean as
+  # possible.
+  def map_places
+    @places = Place.all
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

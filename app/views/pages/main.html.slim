@@ -1,0 +1,10 @@
+- content_title = 'Places and pictures'
+- content_for :page_title, content_title
+
+div class="w-full"
+  div[class="content-box"
+      data-controller="fullmap"
+      data-fullmap-marker-value=marker_icon_data
+      data-fullmap-api-value=map_places_url]
+
+    div id="map" class="h-96 xl:h-[32rem] mt-0 my-3" data-fullmap-target="map"

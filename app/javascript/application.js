@@ -4,3 +4,4 @@ import "controllers"
 
 import "leaflet"
 import "leaflet-geosearch"
+import "@rails/request.js"

@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+import "@rails/request.js"
 import "leaflet"
 import "leaflet-geosearch"
-import "@rails/request.js"
+import "leaflet.markercluster"

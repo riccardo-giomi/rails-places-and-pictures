@@ -47,16 +47,18 @@ export default class extends Controller {
     if (response.ok) {
       const places = await response.json
       const bounds = L.latLngBounds()
-      this.markers = []
+      const markers = L.markerClusterGroup()
 
       for (const i in places) {
         const place = places[i]
         if(place.latitude && place.longitude) {
           const marker = this.marker(place)
-          this.markers.push(marker)
+          markers.addLayer(marker)
           bounds.extend(marker.getLatLng())
         }
       }
+
+      this.map.addLayer(markers)
 
       if(bounds.isValid()) {
         this.map.fitBounds(bounds.pad(0.05))
@@ -81,7 +83,7 @@ export default class extends Controller {
 
     marker.bindPopup(this.popup(place))
 
-    return marker.addTo(this.map)
+    return marker
   }
 
   popup(place) {

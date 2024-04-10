@@ -61,7 +61,7 @@ export default class extends Controller {
       this.map.addLayer(markers)
 
       if(bounds.isValid()) {
-        this.map.fitBounds(bounds.pad(0.05))
+        this.map.fitBounds(bounds.pad(0.1))
       }
     }
   }

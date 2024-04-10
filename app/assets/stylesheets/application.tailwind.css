@@ -193,6 +193,15 @@
   #map {
     @apply dark:text-stone-900;
 
+    h2, h2 a {
+      @apply text-base text-stone-900 mb-1;
+      @apply dark:text-stone-900;
+    }
+
+    input {
+      @apply dark:bg-stone-50;
+    }
+
     input {
       @apply dark:bg-stone-50;
     }

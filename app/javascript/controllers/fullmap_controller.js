@@ -4,7 +4,7 @@ import { get } from '@rails/request.js'
 
 export default class extends Controller {
   static targets = [ "map" ]
-  static values = { marker: Object, api: String }
+  static values = { marker: Object, api: String, place: String }
 
   connect() {
     this.initializePosition()
@@ -52,7 +52,7 @@ export default class extends Controller {
       for (const i in places) {
         const place = places[i]
         if(place.latitude && place.longitude) {
-          const marker = this.addMarker(place)
+          const marker = this.marker(place)
           this.markers.push(marker)
           bounds.extend(marker.getLatLng())
         }
@@ -64,7 +64,7 @@ export default class extends Controller {
     }
   }
 
-  addMarker(place) {
+  marker(place) {
     const icon = L.icon({
       iconUrl: this.markerValue.url,
       shadowUrl: this.markerValue.shadow
@@ -74,10 +74,26 @@ export default class extends Controller {
 
     const marker = L.marker(position, {
       icon,
+      title: place.name,
       keyboard: true,
       autoPanOnFocus: true
     })
 
+    marker.bindPopup(this.popup(place))
+
     return marker.addTo(this.map)
+  }
+
+  popup(place) {
+    const title = '<h2>' + this.linkToPlace(place, place.name) + '</h2>'
+    const body = '<div>' + place.pictures_count + ' picture(s)</div>'
+    return title + body
+  }
+
+  linkToPlace(place, content) {
+    if(!this.placeValue) return content
+
+    const url = this.placeValue.replace(':id', place.id)
+    return '<a href="' + url + '">' + content + '</a>'
   }
 }

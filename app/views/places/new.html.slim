@@ -2,10 +2,7 @@
 - content_for :page_title, "Places | #{content_title}"
 
 div class="w-full"
-  header class="lg:flex items-center gap-1"
-    div class="lg:flex-grow"
-      h1 class="page-title" = content_title
-    div class="lg:flex-shrink"
-      = link_to 'Back to places', places_path, class: 'button'
+  header class=""
+    h1 class="page-title" = content_title
 
   = render 'form', place: @place

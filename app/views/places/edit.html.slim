@@ -5,9 +5,7 @@ div class="w-full"
   header class="lg:flex items-center gap-1"
     div class="lg:flex-grow"
       h1 class="page-title" = content_title
-    div class="lg:flex-shrink"
-      = link_to 'Back to places', places_path, class: 'mb-2 lg:m-0 button', title: 'Back to places'
-    div class="lg:flex-shrink"
+    div class="mt-2 lg:flex-shrink lg:mt-0"
       = link_to 'Show this place', @place, class: 'button'
 
   = render 'form', place: @place, controls: []

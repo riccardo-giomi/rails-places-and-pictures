@@ -27,6 +27,10 @@
 
   header {
     @apply content-box mt-0;
+
+    h1 {
+      @apply my-2;
+    }
   }
 
   h1 {

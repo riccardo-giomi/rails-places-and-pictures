@@ -3,6 +3,9 @@
 An application created as an exercise, it allows to save places selected from a
 map and upload pictures which will be associated with that place.
 
+The app's main page will show a map marking all places on the planet, with
+clustering and a smart initial zoom.
+
 It will Start from a "normal" Rails application created with my
 [quickstart template](https://github.com/riccardo-giomi/rails-7.1-quickstart),
 and made into a Hotwire application.
@@ -13,3 +16,6 @@ For the map and its interface the application uses
 
 Geo Search is implemented with
 [Leaflet GeoSearch](https://github.com/smeijer/leaflet-geosearch).
+
+Maker clustering is done via
+[Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster).

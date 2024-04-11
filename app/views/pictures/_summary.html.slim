@@ -1,0 +1,39 @@
+- # locals: (picture:, controls: [])
+
+- content = capture do
+  div class="text-3xl font-bold"
+    = link_to model_title(picture, 'description'), picture
+
+  - if picture.notes.present?
+    div class="my-3 italic"
+      = picture.notes
+
+  div class="my-3"
+    span class="label" File
+  - if picture.file.attached?
+    div class="w-fit"
+      = render 'application/image', image: picture.file
+  - else
+    span class="italic font-medium" There is no image
+
+  div class="my-3"
+    span class="label" Place
+      = picture.place.name
+
+div id="#{dom_id picture}" class="content-box"
+  - if controls.empty?
+    = content
+  - else
+    div class="lg:grid lg:grid-cols-5 lg:gap-2"
+      div class="lg:col-span-4"
+        = content
+
+      div class="pt-3 lg:pt-0 lg:col-span-1"
+        - unless controls.empty?
+          div class="lg:sticky lg:top-1"
+            - if controls.include?(:show)
+              = link_to 'Show picture', picture, class: 'mb-2 button', title: 'Show picture'
+            - if controls.include?(:edit)
+              = link_to 'Edit picture', edit_picture_path(picture), class: 'mb-2 button', title: 'Edit picture'
+            - if controls.include?(:destroy)
+              = delete_button_with_dialog 'Are you sure you want to delete this picture?', 'Delete picture', picture

@@ -29,12 +29,8 @@
       / set is_required: to true for files with attached: true validations
       = render 'application/form_file', form:, field: 'file', file: picture.persisted_file, is_required: false
 
-
     div class="my-3"
-      = form.label :place_id
-      = form.text_field :place_id
-      - if error = picture.errors[:place_id]&.first
-        p class="field-error-explanation" = error.capitalize
+      = render 'application/form_single_association', form:, name: Place, association: :place
 
     div class="pt-3"
       = form.submit class: 'btn-submit'

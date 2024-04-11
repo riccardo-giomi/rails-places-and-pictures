@@ -2,8 +2,21 @@
 
 h2 Pictures
 - unless pictures.empty?
-  div class="w-fit flex flex-wrap gap-2"
+  div class="w-full"
     - pictures.each do |picture|
-      = render 'application/image', image: picture.file, variant: :thumb
+      div id="#{dom_id picture}" class="content-box"
+        div class="flex gap-x-2 items-center"
+          div class="w-fit min-w-[300px] text-center"
+            - if picture.file.attached?
+              = render 'application/image', image: picture.file
+            - else
+              span class="italic" No image yet
+          div class="flex-grow"
+            div class="text-xl font-bold"
+              = picture.description
+            - if picture.notes.present?
+              div class="my-3 italic"
+                = picture.notes
+
 - else
   span class="italic font-medium" There are no images

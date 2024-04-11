@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PlacesController < ApplicationController
-  before_action :set_place, only: %i[show edit update destroy]
+  before_action :set_place, only: %i[edit update destroy]
 
   # GET /places or /places.json
   def index
@@ -9,7 +9,9 @@ class PlacesController < ApplicationController
   end
 
   # GET /places/1 or /places/1.json
-  def show; end
+  def show
+    @place = Place.joins(:pictures).find(params[:id])
+  end
 
   # GET /places/new
   def new

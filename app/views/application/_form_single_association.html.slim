@@ -1,0 +1,4 @@
+- # locals: (form:, name:, association:)
+
+= form.label name
+= form.collection_select :place_id, Place.all, :id, :name

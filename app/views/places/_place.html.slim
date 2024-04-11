@@ -17,7 +17,8 @@ div[id="#{dom_id place}" class="content-box"
 
       - if place.notes.present?
         div class="my-3"
-          = place.notes
+          span class="italic"
+            = place.notes
 
       div class="my-3"
         = render 'pictures', pictures: place.pictures

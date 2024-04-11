@@ -13,17 +13,8 @@
             - place.errors.each do |error|
               li = error.full_message
 
-      div class="my-3"
-        = form.label :latitude
-        = form.text_field :latitude, data: { 'map-target': "latitude" }, readonly: true, class: 'opacity-50'
-        - if error = place.errors[:latitude]&.first
-          p class="field-error-explanation" = error.capitalize
-
-      div class="my-3"
-        = form.label :longitude
-        = form.text_field :longitude, data: { 'map-target': "longitude" }, readonly: true, class: 'opacity-50'
-        - if error = place.errors[:longitude]&.first
-          p class="field-error-explanation" = error.capitalize
+      = form.hidden_field :latitude,  data: { 'map-target': "latitude" }
+      = form.hidden_field :longitude, data: { 'map-target': "longitude" }
 
       div class="my-3"
         = form.label :name

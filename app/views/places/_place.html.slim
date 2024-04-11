@@ -7,23 +7,15 @@ div[id="#{dom_id place}" class="content-box"
     data-map-longitude-value=place.longitude
     data-map-marker-value=marker_icon_data]
 
-  div class="lg:grid lg:grid-cols-5 lg:gap-2"
-    div class="lg:col-span-4"
+    div id="map" class="h-96 mt-0 my-3" data-map-target="map"
 
-      div id="map" class="h-96 mt-0 my-3" data-map-target="map"
+    div class="text-3xl font-bold"
+      = link_to model_title(place, 'name'), place
 
-      div class="text-3xl font-bold"
-        = link_to model_title(place, 'name'), place
-
-      - if place.notes.present?
-        div class="my-3"
-          span class="italic"
-            = place.notes
-
+    - if place.notes.present?
       div class="my-3"
-        = render 'pictures', pictures: place.pictures
+        span class="italic"
+          = place.notes
 
-    div class="pt-3 lg:pt-0 lg:col-span-1"
-        div class="lg:sticky lg:top-1"
-          = link_to 'Edit place', edit_place_path(place), class: 'mb-2 button', title: 'Edit place'
-          = delete_button_with_dialog 'Are you sure you want to delete this place?', 'Delete place', place
+    div class="my-3"
+      = render 'pictures', pictures: place.pictures

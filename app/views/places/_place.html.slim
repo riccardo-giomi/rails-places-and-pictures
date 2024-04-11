@@ -22,10 +22,6 @@ div[id="#{dom_id place}" class="content-box"
       div class="my-3"
         = render 'pictures', pictures: place.pictures
 
-      div class="my-3"
-        span class="label" Coordinates (temp)
-        = "(#{place.latitude}, #{place.longitude})"
-
     div class="pt-3 lg:pt-0 lg:col-span-1"
         div class="lg:sticky lg:top-1"
           = link_to 'Edit place', edit_place_path(place), class: 'mb-2 button', title: 'Edit place'

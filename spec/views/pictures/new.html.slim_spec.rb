@@ -10,7 +10,7 @@ RSpec.describe 'pictures/new' do
       assert_select 'input[name=?]', 'picture[description]'
       assert_select 'textarea[name=?]', 'picture[notes]'
       assert_select 'input[name=?][type=?]', 'picture[file]', 'file'
-      assert_select 'input[name=?]', 'picture[place_id]'
+      assert_select 'select[name=?]', 'picture[place_id]'
     end
   end
 end

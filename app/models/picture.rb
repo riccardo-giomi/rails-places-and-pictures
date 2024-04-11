@@ -9,8 +9,7 @@ class Picture < ApplicationRecord
   # Starting variants, this should be a sensible default since we know that it
   # is an image:
   has_one_attached :file do |file|
-    file.variant :gallery, resize_to_limit: [300, 300]
-    file.variant :thumb, resize_to_limit: [100, 100]
+    file.variant :thumb, resize_to_limit: [300, 300]
   end
 
   # Starting validation for images, it should be a sensible default.

@@ -82,10 +82,6 @@ RSpec.describe <%= class_name %> do
       if attribute.extended_type.in? [:image, :images]
 -%>
 
-      it 'has a "gallery" variant' do
-        expect(variants).to include(:gallery)
-      end
-
       it 'has a "thumb" variant' do
         expect(variants).to include(:thumb)
       end

@@ -16,7 +16,7 @@ html
 
     = javascript_importmap_tags
 
-  body class="container h-[calc(100%-0.5rem)] mx-auto p-1"
+  body class="container mx-auto"
     nav class="flex items-center gap-2"
       div class="flex-grow"
         div class="flex"
@@ -29,6 +29,6 @@ html
       div class="flex-shrink"
         = link_to 'Pictures', pictures_path, class: 'button'
 
-    main class="min-h-full w-full my-[0.25rem]"
+    main class="min-h-full w-full "
       = render 'notifications'
       = yield

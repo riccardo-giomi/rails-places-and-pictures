@@ -17,7 +17,7 @@ RSpec.describe 'pictures/edit' do
       # To remove the file
       assert_select 'input[name=?][type=?]', 'picture[file]', 'checkbox'
 
-      assert_select 'input[name=?]', 'picture[place_id]'
+      assert_select 'select[name=?]', 'picture[place_id]'
     end
   end
 end

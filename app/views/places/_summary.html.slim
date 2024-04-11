@@ -15,7 +15,7 @@ div id="#{dom_id place}" class="content-box"
         - unless place.pictures.empty?
           div class="w-fit flex flex-wrap gap-2"
             - place.images.each do |image|
-              = render 'application/image', image: image.file, variant: :gallery
+              = render 'application/image', image: image.file, variant: :thumb
         - else
           span class="italic font-medium" There are no images
 

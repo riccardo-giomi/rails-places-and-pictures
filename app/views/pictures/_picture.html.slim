@@ -1,23 +1,21 @@
 - # locals: (picture:, controls: [])
 
 - content = capture do
-  div class="text-3xl font-bold"
+  div class="text-2xl font-bold"
     = link_to model_title(picture, 'description'), picture
+
+  div class="my-3 mx-auto"
+  - if picture.file.attached?
+    div class="w-fit"
+      = render 'application/image', image: picture.file, variant: :no
 
   - if picture.notes.present?
     div class="my-3 italic"
       = picture.notes
 
   div class="my-3"
-    span class="label" File
-  - if picture.file.attached?
-    div class="w-fit"
-      = render 'application/image', image: picture.file
-  - else
-    span class="italic font-medium" There is no image
-  div class="my-3"
-    span class="label" Place
-  = model_value(picture, 'place_id')
+    span class="font-bold" Taken from:
+    =< link_to picture.place.name, place_path(picture.place)
 
 div id="#{dom_id picture}" class="content-box"
   - if controls.empty?

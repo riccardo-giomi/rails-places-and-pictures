@@ -38,10 +38,6 @@ RSpec.describe Picture do
         expect(picture.file).to respond_to(:attachment)
       end
 
-      it 'has a "gallery" variant' do
-        expect(variants).to include(:gallery)
-      end
-
       it 'has a "thumb" variant' do
         expect(variants).to include(:thumb)
       end

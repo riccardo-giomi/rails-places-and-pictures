@@ -1,5 +1,6 @@
-- # locals: (image:, variant: :gallery)
+- # locals: (image:, variant: :thumb)
 - dom_id = dom_id image
+- variant = nil if variant == :no
 
 div data-controller="dialog"
   div class="cursor-pointer" data-action="click->dialog#open"

@@ -13,7 +13,7 @@
   }
 
   nav {
-    @apply bg-neutral-200 border border-stone-300 p-2 md:mt-5 shadow-md shadow-stone-300;
+    @apply bg-neutral-200 border border-stone-300 p-2 shadow-md shadow-stone-300;
     @apply dark:bg-neutral-950 dark:border-neutral-700 dark:shadow-md dark:shadow-neutral-700;
 
     h1 {

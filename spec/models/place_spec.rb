@@ -18,39 +18,24 @@ RSpec.describe Place do
     specify('longitude') { expect(place.longitude).to eq(BigDecimal('13.37')) }
   end
 
-  describe 'attachments' do
-    describe '#pictures' do
-      let(:variants) { described_class.reflect_on_attachment(:pictures).named_variants.keys }
+  describe '#pictures' do
+    it 'is a relation to the related pictures' do
+      place = build(:complete_place)
+      expect(place.pictures.first).to be_a(Picture)
+    end
 
-      # The double expectations is there because single attachments also respond
-      # to #attachments
-      it 'is a multi-file attachment' do
-        expect(place.pictures)
-          .to respond_to(:attachments)
-          .and not_to_respond_to(:attachment)
-      end
+    it 'is optional' do
+      place = build(:place)
+      expect(place).to be_valid
+    end
+  end
 
-      it 'has a "gallery" variant' do
-        expect(variants).to include(:gallery)
-      end
+  describe '#images' do
+    let(:place) { build(:complete_place) }
 
-      it 'has a "thumb" variant' do
-        expect(variants).to include(:thumb)
-      end
-
-      # Additional spec for images that are validated as required.
-      # it 'is required' do
-      #   expect(place).to validate_attached_of(:pictures)
-      # end
-
-      it 'must be a valid image file' do
-        expect(place).to validate_content_type_of(:pictures).allowing(:jpg, :jpeg, :png)
-      end
-
-      # Additional spec for images that have a size validation (1MB in this example).
-      # it 'must be of the right size (<= 1MB)' do
-      #   expect(place).to validate_size_of(:pictures).less_than_or_equal_to(1.megabyte)
-      # end
+    it 'returns only pictures that have a file' do
+      place.pictures << build(:picture)
+      expect(place.images.count).to eq(1)
     end
   end
 end

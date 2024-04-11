@@ -1,0 +1,12 @@
+- content_title = 'Pictures'
+- content_for :page_title, content_title
+
+div class="w-full"
+  header class="lg:flex items-center gap-1"
+    div class="lg:flex-grow"
+      h1 class="page-title" = content_title
+    div class="lg:flex-shrink"
+      = link_to 'New picture', new_picture_path, class: 'button', title: 'New picture'
+
+  div id="pictures"
+    = render @pictures, controls: [:show, :edit]

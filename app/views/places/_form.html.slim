@@ -37,11 +37,6 @@
         - if error = place.errors[:notes]&.first
           p class="field-error-explanation" = error.capitalize
 
-      div class="my-3"
-        = form.label :pictures
-        / set is_required: to true for files with attached: true validations
-        = render 'application/form_files', form:, field: 'pictures', files: place.persisted_pictures, is_required: false
-
       div class="pt-3"
         = form.submit class: 'btn-submit'
 

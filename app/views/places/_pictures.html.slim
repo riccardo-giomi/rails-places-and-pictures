@@ -1,0 +1,9 @@
+- # locals: (pictures:)
+
+h2 Pictures
+- unless pictures.empty?
+  div class="w-fit flex flex-wrap gap-2"
+    - pictures.each do |picture|
+      = render 'application/image', image: picture.file, variant: :thumb
+- else
+  span class="italic font-medium" There are no images

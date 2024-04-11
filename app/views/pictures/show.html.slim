@@ -1,0 +1,11 @@
+- content_title = 'Picture'
+- content_for :page_title, "Records | #{content_title}"
+
+div class="w-full"
+  header class="lg:flex items-center gap-1"
+    div class="lg:flex-grow"
+      h1 class="page-title" = content_title
+    div class="lg:flex-shrink"
+      = link_to 'Back to pictures', pictures_path, class: 'button'
+
+  = render @picture, controls: [:edit, :destroy]

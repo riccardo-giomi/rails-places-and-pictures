@@ -1,4 +1,4 @@
-- # locals: (place:, controls: [])
+- # locals: (place:)
 
 div[id="#{dom_id place}" class="content-box"
     data-controller="map"
@@ -20,13 +20,7 @@ div[id="#{dom_id place}" class="content-box"
           = place.notes
 
       div class="my-3"
-        h2 Pictures
-      - unless place.pictures.empty?
-        div class="w-fit flex flex-wrap gap-2"
-          - place.pictures.each do |image|
-            = render 'application/image', image:, variant: :thumb
-      - else
-        span class="italic font-medium" There are no images
+        = render 'pictures', pictures: place.pictures
 
       div class="my-3"
         span class="label" Coordinates (temp)

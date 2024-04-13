@@ -1,8 +1,8 @@
 - # locals: (place:, controls: [])
 
 div id="#{dom_id place}" class="content-box"
-  div class="lg:grid lg:grid-cols-5 lg:gap-2"
-    div class="lg:col-span-4"
+  div class="lg:flex lg:gap-2"
+    div class="lg:flex-grow"
       div class="text-3xl font-bold"
         = link_to model_title(place, 'name'), place
 
@@ -11,15 +11,16 @@ div id="#{dom_id place}" class="content-box"
           = place.notes
 
       div class="my-3"
-        h2 Pictures
+        - images = place.images
+        h2 = "Pictures (#{images.count})"
         - unless place.pictures.empty?
           div class="w-fit flex flex-wrap gap-2"
-            - place.images.each do |image|
+            - images.each do |image|
               = render 'application/image', image: image.file, variant: :thumb
         - else
           span class="italic font-medium" There are no images
 
-    div class="pt-3 lg:pt-0 lg:col-span-1"
+    div class="pt-3 lg:pt-0 lg:flex-shrink"
         div class="lg:sticky lg:top-1"
           = link_to 'Show place', place, class: 'mb-2 button', title: 'Show place'
           = link_to 'Edit place', edit_place_path(place), class: 'mb-2 button', title: 'Edit place'

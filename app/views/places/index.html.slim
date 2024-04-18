@@ -5,8 +5,9 @@ div class="w-full"
   header class="lg:flex items-center gap-2"
     div class="lg:flex-grow"
       h1 class="page-title" = content_title
-    div class="mt-2 lg:mt-0 lg:flex-shrink"
+    div class="lg:flex-shrink"
       = link_to 'New place', new_place_path, class: 'button', title: 'New place'
 
   div id="places"
+    = render 'application/pager', page: 100000, pages: 100000
     = render partial: 'places/summary', collection: @places, as: :place

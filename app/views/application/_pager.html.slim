@@ -1,0 +1,16 @@
+- # locals: (page: 1, pages:)
+
+div class="content-box p-2"
+  div class="flex gap-x-2"
+    div class="w-12 lg:w-20"
+      button class="button" disabled="disabled" <<
+    div class="w-12 lg:w-20"
+      button class="button" <
+    div class="my-auto text-center flex-grow"
+      | Page
+      br
+      | #{page} of #{pages}
+    div class="w-12 lg:w-20"
+      button class="button" >
+    div class="w-12 lg:w-20"
+      button class="button" >>

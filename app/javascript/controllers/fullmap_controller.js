@@ -88,7 +88,7 @@ export default class extends Controller {
 
   popup(place) {
     const title = '<h2>' + this.linkToPlace(place, place.name) + '</h2>'
-    const body = '<div>' + place.pictures_count + ' picture(s)</div>'
+    const body = '<div>' + place.pictures_count + '</div>'
     return title + body
   }
 

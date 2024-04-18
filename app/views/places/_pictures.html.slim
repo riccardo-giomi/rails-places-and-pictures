@@ -1,10 +1,11 @@
 - # locals: (pictures:)
 
-h2 = "Pictures (#{pictures.count})"
+div class="font-bold mt-4"
+  = "#{place_pictures_count(pictures).capitalize}:"
 - unless pictures.empty?
   div class="w-full"
     - pictures.each do |picture|
-      div id="#{dom_id picture}" class="content-box"
+      div id="#{dom_id picture}" class="content-box my-2 shadow-sm"
         div class="flex gap-x-2 items-center"
           div class="w-fit min-w-[300px] text-center"
             - if picture.file.attached?

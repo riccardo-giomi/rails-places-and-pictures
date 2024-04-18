@@ -2,5 +2,5 @@
 
 json.array!(@places) do |place|
   json.extract! place, :id, :name, :latitude, :longitude
-  json.pictures_count place.images.count
+  json.pictures_count pictures_count(place.pictures)
 end

@@ -1,9 +1,9 @@
 - # locals: (place:, controls: [])
 
-div id="#{dom_id place}" class="content-box"
+div id="#{dom_id place}" class="content-box pb-1"
   div class="lg:flex lg:gap-2"
     div class="lg:flex-grow"
-      div class="text-3xl font-bold"
+      h2
         = link_to model_title(place, 'name'), place
 
       - if place.notes.present?
@@ -11,14 +11,8 @@ div id="#{dom_id place}" class="content-box"
           = place.notes
 
       div class="my-3"
-        - images = place.images
-        h2 = "Pictures (#{images.count})"
-        - unless place.pictures.empty?
-          div class="w-fit flex flex-wrap gap-2"
-            - images.each do |image|
-              = render 'application/image', image: image.file, variant: :thumb
-        - else
-          span class="italic font-medium" There are no images
+        div class="text-sm"
+          = "(#{place_pictures_count(place.pictures).capitalize})."
 
     div class="pt-3 lg:pt-0 lg:flex-shrink"
         div class="lg:sticky lg:top-1"

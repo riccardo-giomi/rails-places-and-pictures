@@ -78,6 +78,7 @@ group :development, :test do
 end
 
 gem 'active_storage_validations'
+gem 'humanize'
 gem 'image_processing'
 gem 'requestjs-rails'
 gem 'ruby-vips'

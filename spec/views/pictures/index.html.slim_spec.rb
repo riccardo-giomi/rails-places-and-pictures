@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
 RSpec.describe 'pictures/index' do
-  let(:pictures) { create_list(:complete_picture, 2) }
+  include Pagy::Backend
 
-  before { assign(:pictures, pictures) }
+  before do
+    create_list(:complete_picture, 2)
+    @pagy, @pictures = pagy(Picture.all)
+
+    assign(:pictures, @pictures)
+  end
 
   it 'renders a list of pictures' do
     render
 
-    pictures.each do |picture|
+    @pictures.each do |picture| # rubocop:disable RSpec/InstanceVariable
       assert_select "#pictures div##{dom_id picture}" do
         assert_select 'div', html: Regexp.new('href=".*pictures\/\d+".*>Description Value')
         assert_select 'div', text: Regexp.new('Notes Value')

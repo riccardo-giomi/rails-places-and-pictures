@@ -8,5 +8,6 @@ div class="w-full"
     div class="lg:flex-shrink"
       = link_to 'New picture', new_picture_path, class: 'button', title: 'New picture'
 
+  = render 'application/pager'
   div id="pictures"
     = render @pictures

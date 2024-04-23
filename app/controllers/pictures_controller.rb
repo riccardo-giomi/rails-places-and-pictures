@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class PicturesController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_picture, only: %i[show edit update destroy]
 
-  # GET /pictures or /pictures.json
+  # GET /places or /places.json
   def index
-    @pictures = Picture.all
+    @pagy, @pictures = pagy(Picture.all)
   end
 
   # GET /pictures/1 or /pictures/1.json

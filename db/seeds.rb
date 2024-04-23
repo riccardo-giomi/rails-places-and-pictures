@@ -33,8 +33,8 @@ coordinates = [
   [38.71, -9.13]    # Lisbon
 ]
 20.times do |i|
-  Place.create(name:      "I am a place, and I'm the number #{i}!",
-               notes:     "Here lie the notes for place number #{i}, full of blah blah and with a sprinkle of Lorem Ipsum Dolor Sit Amet...",
+  Place.create(name:      "I am a place, and I'm the number #{i + 1}!",
+               notes:     "Here lie the notes for place number #{i + 1}, full of blah blah and with a sprinkle of Lorem Ipsum Dolor Sit Amet...",
                latitude:  coordinates[i][0],
                longitude: coordinates[i][1])
 end

@@ -38,7 +38,13 @@ coordinates = [
                        latitude:  coordinates[i][0],
                        longitude: coordinates[i][1])
 
-  Picture.create(description: "Hi I'm picture number #{i + 1}.",
-                 notes:       "Note for picture number #{i + 1} kinda something like Lorem Ipsum, much Dolor; somewhat Amet.",
-                 place:)
+  picture = Picture.create(description: "Hi I'm picture number #{i + 1}.",
+                           notes:       "Note for picture number #{i + 1} kinda something like Lorem Ipsum, much Dolor; somewhat Amet.",
+                           place:)
+
+  picture.file.attach(
+    io:           File.open(Rails.root.join('spec/fixtures/files/300x300.jpg').to_s),
+    filename:     "picture_file_#{i}.jpg",
+    content_type: 'image/jpg'
+  )
 end

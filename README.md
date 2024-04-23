@@ -19,3 +19,43 @@ Geo Search is implemented with
 
 Maker clustering is done via
 [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster).
+
+
+## Installation
+
+The following commands will download the app's code, download or update the
+required Ruby Gems, and prepare a database for the application.
+
+``` bash
+git clone https://github.com/riccardo-giomi/rails-places-and-pictures
+cd rails-places-and-pictures
+bundle
+bin/rails db:prepare
+```
+
+Some example data with fake pictures is available as seeds if you want:
+``` bash
+bin/rails db:seed
+```
+
+*Note:* it might take a while to create the twenty pictures with image.
+
+*Important*: dropping the database, or replanting the seeds does not seem to
+remove the picture files created this way.
+The fastest way that I have found to clear the old files is to simply remove all
+directories from `storage/` or, if dropping the database, just remove `storage`
+all together (it will be recreated as needed).
+
+You can run the specs with:
+``` bash
+bundle exec rspec
+```
+
+And start the server with:
+``` bash
+bin/dev
+```
+
+The application will be available to a browser at `http://localhost:3000`.
+
+

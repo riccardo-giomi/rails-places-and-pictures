@@ -47,4 +47,8 @@ coordinates = [
     filename:     "picture_file_#{i}.jpg",
     content_type: 'image/jpg'
   )
+
+  # SQLite seems to have problems attaching multiple images too quickly, this
+  # helps avoid the corresponding SQLite3::BusyException:
+  sleep 1
 end

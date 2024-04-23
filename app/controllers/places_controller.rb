@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class PlacesController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_place, only: %i[edit update destroy]
 
   # GET /places or /places.json
   def index
-    @places = Place.all
+    @pagy, @places = pagy(Place.all)
   end
 
   # GET /places/1 or /places/1.json
@@ -64,6 +66,7 @@ class PlacesController < ApplicationController
   def map_places
     @places = Place.all
   end
+
 
   private
 

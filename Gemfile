@@ -80,5 +80,6 @@ end
 gem 'active_storage_validations'
 gem 'humanize'
 gem 'image_processing'
+gem 'pagy', '~> 8.2'
 gem 'requestjs-rails'
 gem 'ruby-vips'

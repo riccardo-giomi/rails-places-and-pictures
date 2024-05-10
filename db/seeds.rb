@@ -10,6 +10,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+puts
+puts 'Seeding a number of example places and pictures, this might take a bit.'
+
 coordinates = [
   [39.61, -105.02], # Littleton, Colorado USA
   [39.74, -104.99], # Denver, Colorado USA

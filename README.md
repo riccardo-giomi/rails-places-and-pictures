@@ -20,7 +20,6 @@ Geo Search is implemented with
 Maker clustering is done via
 [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster).
 
-
 ## Installation
 
 The following commands will download the app's code, download or update the
